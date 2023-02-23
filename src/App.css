@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --grey: #504944;
+  --paper: #e9e4de;
+  --gold: #cdbc92;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav {
+  background-color: var(--grey);
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.btn-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-nav {
+  background-color: var(--gold);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
+}
+.btn-nav.reset {
+  background-color: red;
+}
+
+.btn-nav.print {
+  background-color: green;
+}
