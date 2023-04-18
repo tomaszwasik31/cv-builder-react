@@ -48,3 +48,35 @@ nav {
 .btn-nav.print {
   background-color: green;
 }
+
+.main-container {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+}
+
+.form-container {
+  padding: 1rem;
+  background-color: white;
+}
+.form-section-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.info-title {
+  grid-column: 1/3;
+}
+
+.description {
+  grid-column: 1/3;
+  min-height: 5rem;
+}
+
+.preview-container {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+}
