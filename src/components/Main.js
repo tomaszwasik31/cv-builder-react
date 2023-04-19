@@ -75,7 +75,18 @@ export default function Main() {
     ));
   };
 
-  console.log(formData.workHistory);
+  function addWork() {
+    setWorkHistory((prevData) => {
+      return [
+        ...prevData,
+        {
+          workspace: "new work",
+          startDate: "01.01.2020",
+          endDate: "01.01.2020",
+        },
+      ];
+    });
+  }
 
   return (
     <div className="main-container">
@@ -147,6 +158,9 @@ export default function Main() {
           <h3 className="info-title">Work History</h3>
 
           {allWork()}
+          <button className="add-work" onClick={addWork}>
+            +
+          </button>
         </div>
       </form>
       <div className="preview-container">
