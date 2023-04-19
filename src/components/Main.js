@@ -47,33 +47,35 @@ export default function Main() {
 
   const allWork = () => {
     return workHistory.map((work, i) => (
-      <div key={i}>
+      <div className="work-container" key={i}>
         <h3 className="work-counter">{`Workspace ${i + 1}`}</h3>
 
-        <input
-          type="text"
-          placeholder="workspace"
-          onChange={(e) => handleWorkChange(e, i)}
-          name="workspace"
-          value={work.workspace}
-        />
-        <input
-          type="text"
-          placeholder="start Date"
-          onChange={(e) => handleWorkChange(e, i)}
-          name="startDate"
-          value={work.startDate}
-        />
-        <input
-          type="text"
-          placeholder="end Date"
-          onChange={(e) => handleWorkChange(e, i)}
-          name="endDate"
-          value={work.endDate}
-        />
-        <button className="remove-work" onClick={(e) => removeWork(e, i)}>
-          -
-        </button>
+        <div className="work-inputs">
+          <input
+            type="text"
+            placeholder="workspace"
+            onChange={(e) => handleWorkChange(e, i)}
+            name="workspace"
+            value={work.workspace}
+          />
+          <input
+            type="text"
+            placeholder="start Date"
+            onChange={(e) => handleWorkChange(e, i)}
+            name="startDate"
+            value={work.startDate}
+          />
+          <input
+            type="text"
+            placeholder="end Date"
+            onChange={(e) => handleWorkChange(e, i)}
+            name="endDate"
+            value={work.endDate}
+          />
+          <button className="remove-work" onClick={(e) => removeWork(e, i)}>
+            Remove
+          </button>
+        </div>
       </div>
     ));
   };
@@ -161,13 +163,14 @@ export default function Main() {
             />
           </label>
         </div>
-        <div className="form-section-container">
+        <div className="form-section-container full">
           <h3 className="info-title">Work History</h3>
-
-          {allWork()}
-          <button className="add-work" onClick={addWork}>
-            +
-          </button>
+          <div className="all-work-container">
+            {allWork()}
+            <button className="add-work" onClick={addWork}>
+              New workspace
+            </button>
+          </div>
         </div>
       </form>
       <div className="preview-container">

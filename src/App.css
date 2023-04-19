@@ -34,12 +34,7 @@ nav {
 
 .btn-nav {
   background-color: var(--gold);
-  border: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
   color: white;
-  border-radius: 5px;
 }
 .btn-nav.reset {
   background-color: red;
@@ -76,7 +71,61 @@ nav {
 }
 
 .preview-container {
-  width: 100%;
-  height: 500px;
   background-color: white;
+}
+
+.all-work-container {
+  display: grid;
+  grid-column: 1/3;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.work-container {
+  background-color: var(--gold);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  padding: 1rem;
+}
+.work-counter {
+  padding: 0;
+  margin: 0;
+  grid-column: 1/3;
+}
+.work-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-work {
+  margin: 3rem;
+}
+.remove-work{
+  width: 120px;
+  font-size: .8rem;
+  padding: .3rem;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #222222;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+    -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #fff;
+  color: #222222;
+}
+
+button:hover {
+  border-color: #000000;
+  background: #f7f7f7;
 }
