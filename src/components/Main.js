@@ -71,6 +71,9 @@ export default function Main() {
           name="endDate"
           value={work.endDate}
         />
+        <button className="remove-work" onClick={(e) => removeWork(e, i)}>
+          -
+        </button>
       </div>
     ));
   };
@@ -86,6 +89,10 @@ export default function Main() {
         },
       ];
     });
+  }
+  function removeWork(event, i) {
+    event.stopPropagation();
+    setWorkHistory((prevData) => prevData.filter((_, index) => index !== i));
   }
 
   return (
