@@ -1,5 +1,6 @@
 import React from "react";
 import phImg from "../components/ph-img.jpg";
+import Preview from "./Preview";
 
 export default function Main() {
   const [workHistory, setWorkHistory] = React.useState([
@@ -18,6 +19,7 @@ export default function Main() {
   const [formData, setFormData] = React.useState({
     firstName: "tom",
     lastName: "was",
+    jobPosition: "front-end Developer",
     email: "tom@was.com",
     tel: "123123123",
     linkedin: "www.link.com",
@@ -118,6 +120,13 @@ export default function Main() {
             value={formData.lastName}
           />
           <input
+            type="text"
+            placeholder="Job Position"
+            onChange={handleChange}
+            name="jobPosition"
+            value={formData.jobPosition}
+          />
+          <input
             type="email"
             placeholder="Email"
             onChange={handleChange}
@@ -173,9 +182,8 @@ export default function Main() {
           </div>
         </div>
       </form>
-      <div className="preview-container">
-        <img src={formData.photo} alt="" />
-      </div>
+
+      <Preview formData={formData} />
     </div>
   );
 }
