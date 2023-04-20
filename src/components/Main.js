@@ -1,15 +1,18 @@
 import React from "react";
 import phImg from "../components/ph-img.jpg";
 import Preview from "./Preview";
+import { nanoid } from "nanoid";
 
 export default function Main() {
   const [workHistory, setWorkHistory] = React.useState([
     {
+      id: nanoid(),
       workspace: "first work",
       startDate: "01.01.2020",
       endDate: "01.01.2020",
     },
     {
+      id: nanoid(),
       workspace: "second work",
       startDate: "01.01.2020",
       endDate: "01.01.2020",
@@ -38,43 +41,50 @@ export default function Main() {
     }));
   }
 
-  function handleWorkChange(event, i) {
+  function handleWorkChange(event, id) {
     const { name, value } = event.target;
-    setWorkHistory((prevWorkHistory) => {
-      const updatedWorkHistory = [...prevWorkHistory];
-      updatedWorkHistory[i][name] = value;
-      return updatedWorkHistory;
-    });
+
+    setWorkHistory((prevWorkHistory) =>
+      prevWorkHistory.map((work) => {
+        if (work.id === id) {
+          return { ...work, [name]: value };
+        }
+        return work;
+      })
+    );
   }
 
   const allWork = () => {
     return workHistory.map((work, i) => (
-      <div className="work-container" key={i}>
+      <div className="work-container" key={work.id}>
         <h3 className="work-counter">{`Workspace ${i + 1}`}</h3>
 
         <div className="work-inputs">
           <input
             type="text"
             placeholder="workspace"
-            onChange={(e) => handleWorkChange(e, i)}
+            onChange={(e) => handleWorkChange(e, work.id)}
             name="workspace"
             value={work.workspace}
           />
           <input
             type="text"
             placeholder="start Date"
-            onChange={(e) => handleWorkChange(e, i)}
+            onChange={(e) => handleWorkChange(e, work.id)}
             name="startDate"
             value={work.startDate}
           />
           <input
             type="text"
             placeholder="end Date"
-            onChange={(e) => handleWorkChange(e, i)}
+            onChange={(e) => handleWorkChange(e, work.id)}
             name="endDate"
             value={work.endDate}
           />
-          <button className="remove-work" onClick={(e) => removeWork(e, i)}>
+          <button
+            className="remove-work"
+            onClick={(e) => removeWork(e, work.id)}
+          >
             Remove
           </button>
         </div>
@@ -87,6 +97,7 @@ export default function Main() {
       return [
         ...prevData,
         {
+          id: nanoid(),
           workspace: "new work",
           startDate: "01.01.2020",
           endDate: "01.01.2020",
@@ -94,9 +105,10 @@ export default function Main() {
       ];
     });
   }
-  function removeWork(event, i) {
+  function removeWork(event, id) {
     event.stopPropagation();
-    setWorkHistory((prevData) => prevData.filter((_, index) => index !== i));
+
+    setWorkHistory((prevData) => prevData.filter((work) => work.id !== id));
   }
 
   return (
