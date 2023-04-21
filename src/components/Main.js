@@ -1,32 +1,15 @@
 import React from "react";
-import phImg from "../components/ph-img.jpg";
+import { nanoid } from "nanoid";
 import Preview from "./Preview";
 import PersonalInputs from "./PersonalInputs";
-import { nanoid } from "nanoid";
+
 import AllWork from "./AllWork";
 
-export default function Main() {
-  const [workHistory, setWorkHistory] = React.useState([
-    {
-      id: nanoid(),
-      workspace: "first work",
-      startDate: "01.01.2020",
-      endDate: "01.01.2020",
-    },
-  ]);
-
-  const [formData, setFormData] = React.useState({
-    firstName: "tom",
-    lastName: "was",
-    jobPosition: "front-end Developer",
-    email: "tom@was.com",
-    tel: "123123123",
-    linkedin: "www.link.com",
-    github: "www.link.com",
-    description: "short description of your work experience",
-    photo: phImg,
-    workHistory: workHistory,
-  });
+export default function Main(props) {
+  const setFormData = props.setFormData;
+  const formData = props.formData;
+  const setWorkHistory = props.setWorkHistory;
+  const workHistory = props.workHistory;
 
   function handleChange(event) {
     const { name, value, files } = event.target;
@@ -50,15 +33,16 @@ export default function Main() {
     );
   }
 
-  function addWork() {
+  function addWork(event) {
+    event.preventDefault();
     setWorkHistory((prevData) => {
       return [
         ...prevData,
         {
           id: nanoid(),
-          workspace: "new work",
-          startDate: "01.01.2020",
-          endDate: "01.01.2020",
+          workspace: "new workspace -position",
+          startDate: "start date",
+          endDate: "end date",
         },
       ];
     });
@@ -86,7 +70,7 @@ export default function Main() {
         </div>
       </form>
 
-      <Preview formData={formData} />
+      <Preview formData={formData} workHistory={workHistory} />
     </div>
   );
 }
