@@ -51,6 +51,10 @@ export default function Navbar(props) {
     props.setFormData(exampleFormData);
     props.setWorkHistory(exampleWorkHistory);
   }
+
+  function handlePrint() {
+    window.print();
+  }
   return (
     <nav>
       <div className="logo">Resume Builder</div>
@@ -61,7 +65,9 @@ export default function Navbar(props) {
         <button className="btn-nav reset" onClick={clearFormData}>
           Reset
         </button>
-        <button className="btn-nav print">Print</button>
+        <button className="btn-nav print" onClick={handlePrint}>
+          Print
+        </button>
       </div>
     </nav>
   );

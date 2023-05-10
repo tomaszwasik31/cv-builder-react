@@ -70,7 +70,7 @@ export default function Main(props) {
         </div>
       </form>
 
-      <Preview formData={formData} workHistory={workHistory} />
+      <Preview formData={formData} workHistory={workHistory} className="print-area" />
     </div>
   );
 }
